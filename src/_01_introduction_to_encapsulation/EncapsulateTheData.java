@@ -18,16 +18,13 @@ package _01_introduction_to_encapsulation;
 public class EncapsulateTheData {
 	// 1. Encapsulate the member variables.
 	// Add restrictions to the setters according to the comment.
-
+	
+	
 	// 2. Create a new JUnit Test case and write tests to verify that
 	// the member variables' getters and setters are working
 
 	int itemsReceived; // must not be negative. All negative arguments get set to 0.
 	protected int _itemsReceived;
-
-	float degreesTurned; // must be locked between 0.0 and 360.0 inclusive.
-	String nomenclature = " "; // must not be set to a blank string. Blank Strings get set to a space
-	Object memberObj; // must not be a String. If it is a String, set it equal to a new Object();
 
 	public int getItemsReceived() {
 		return _itemsReceived;
@@ -36,6 +33,46 @@ public class EncapsulateTheData {
 	public void setItemsReceived(int itemsReceived) throws Exception {
 		if(itemsReceived < 0) throw new Exception();
 		_itemsReceived = itemsReceived;
+	}
+	
+	
+	float degreesTurned; // must be locked between 0.0 and 360.0 inclusive.
+	protected float _degreesTurned;
+	
+	public float getDegreesTurned() {
+		return _degreesTurned;
+	}
+	
+	public void setDegreesTurned(float degreesTurned) throws Exception {
+		if(degreesTurned < 0.0 || degreesTurned > 360.0) throw new Exception();
+		_degreesTurned = degreesTurned;
+	}
+	
+	
+	String nomenclature = " "; // must not be set to a blank string. Blank Strings get set to a space
+	protected String _nomenclature;
+	
+	public String getNomenclature() {
+		return _nomenclature;
+	}
+	
+	public void setNomenclature(String nomenclature) throws Exception {
+		if(nomenclature.equals("") || nomenclature.equals(null)) throw new Exception();
+		_nomenclature = nomenclature;
+	}
+	
+	
+	Object memberObj; // must not be a String. If it is a String, set it equal to a new Object();
+	protected Object _memberObj;
+
+	public Object getMemberObj() {
+		return _memberObj;
+	}
+	
+	public void setMemberObj(Object memberObj) throws Exception {
+		if(memberObj.equals(memberObj.toString())) {
+			_memberObj = memberObj;
+		}
 	}
 
 	public static void main(String[] args) {
